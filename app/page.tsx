@@ -7,7 +7,6 @@ import DecryptedText from './components/DecryptedText';
 import Particles from '@/components/Particles';
 import SpotlightCard from './components/SpotLightCard';
 import LetterGlitch from './components/LetterGlitch';
-import Carousel from './components/Carousel';
 import Folder from './components/Folder';
 import BounceCards from './components/BounceCards'
 
@@ -186,32 +185,30 @@ export default function Home() {
             smooth={true}
           />
         </div>
-
-        <div
-          className="
-    relative z-10 flex justify-center items-center 
-    w-full 
-    h-[280px]        /* mobile */
-    sm:h-[350px]     /* tablets */
-    md:h-[450px]     /* small laptops */
-    lg:h-[600px]     /* desktop */
-    xl:h-[650px]     /* big monitors */
-    max-w-[1200px] 
-    px-4
-  "
-        >
-          <Carousel
-            baseWidth={350}   /* decent size */
-            autoplay={true}
-            autoplayDelay={3000}
-            pauseOnHover={true}
-            loop={true}
-            round={false}
-          />
+        <div className="relative z-10 w-full flex flex-col items-center justify-center text-white text-center">
+          <h2 className="text-3xl font-bold mb-6">
+            My skills
+          </h2>
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl">
+            {[
+              { label: "Programming Languages", value: "Java, Python, SQL, HTML, CSS, JavaScript, C++" },
+              { label: "Frameworks & Tools", value: "Android Studio, XAMPP, FastAPI, VS Code, JWT Auth, API Integration" },
+              { label: "Database Management", value: "MySQL, SQLite (Room Database)" },
+              { label: "Web Development Basics", value: "Next.js (Beginner Level)" },
+              { label: "Prompt Engineer", value: "Efficient working capability with AI" },
+              { label: "Technical Problem Solving", value: "Debugging, Optimizing workflows, Troubleshooting across multiple languages and tools" }
+            ].map((item, index) => (
+              <SpotlightCard
+                key={index}
+                className="w-full min-h-[100px] flex flex-col items-center justify-center p-4"
+                spotlightColor="rgba(0, 229, 255, 0.2)"
+              >
+                <span className="text-sm opacity-70">{item.label}</span>
+                <span className="font-medium text-base mt-1">{item.value}</span>
+              </SpotlightCard>
+            ))}
+          </div>
         </div>
-
-
-
       </section>
 
       {/* Projects Section */}
