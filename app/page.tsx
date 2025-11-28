@@ -22,20 +22,20 @@ export default function Home() {
 
   // ✅ your arrays must be used here (not inside JSX)
   const waifuImages: string[] = [
-    "/kouko.png",
-    "/kaguya.png",
-    "/shikimori.png",
+    "/Kouko.png",
+    "/Kaguya.png",
+    "/Shikimori.png",
     "/Miku.png",
     "/Waguri.png"
   ];
 
   const waifuTransforms: string[] = [
-    "rotate(5deg) translate(-150px)",
-    "rotate(0deg) translate(-70px)",
-    "",
-    "rotate(5deg) translate(70px)",
-    "rotate(-5deg) translate(150px)"
-  ];
+  "rotate(5deg) translate(-150px)",
+  "rotate(0deg) translate(-70px)",
+  "rotate(0deg)",          // <-- fixed index 2
+  "rotate(5deg) translate(70px)",
+  "rotate(-5deg) translate(150px)"
+];
 
   // ✅ State to detect mobile viewport
   const [isMobile, setIsMobile] = useState(false);
@@ -309,8 +309,8 @@ export default function Home() {
           <BounceCards
             className="custom-bounceCards"
             images={waifuImages}
-            containerWidth={isMobile ? 300 : 500}   // ✅ use state
-            containerHeight={isMobile ? 150 : 250}  // ✅ use state
+            containerWidth={isMobile ? 300 : 500}
+            containerHeight={isMobile ? 150 : 250}
             animationDelay={1}
             animationStagger={0.08}
             easeType="elastic.out(1, 0.5)"
