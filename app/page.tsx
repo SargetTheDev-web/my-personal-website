@@ -6,9 +6,10 @@ import GooeyNav from "./components/nav/GooeyNav";
 import DecryptedText from "./components/DecryptedText";
 import Particles from "@/components/Particles";
 import SpotlightCard from "./components/SpotLightCard";
-import LetterGlitch from "./components/LetterGlitch";
 import Folder from "./components/Folder";
 import BounceCards from "./components/BounceCards";
+import Plasma from "./components/plasma";
+import DarkVeil from "./components/DarkVeil";
 
 export default function Home() {
   const navItems = [
@@ -64,7 +65,6 @@ export default function Home() {
           <GooeyNav items={navItems} />
         </div>
       </div>
-
       {/* Hero Section */}
       <section
         id="hero"
@@ -104,7 +104,6 @@ export default function Home() {
           />
         </div>
       </section>
-
       {/* About Section */}
       <section
         id="about"
@@ -193,23 +192,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section */}
       <section
         id="skills"
         className="min-h-screen relative flex flex-col items-center justify-center bg-black overflow-hidden pt-24 sm:pt-0"
       >
-        <div className="absolute inset-0 z-0 flex items-center justify-center w-full h-full">
-          <LetterGlitch
-            glitchColors={["#00ff00", "#00ffff", "#008000"]}
-            characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-            glitchSpeed={50}
-            centerVignette={true}
-            outerVignette={false}
-            smooth={true}
+        {/* Plasma Background */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <Plasma
+            color="#3553ff"
+            speed={0.6}
+            direction="forward"
+            scale={1.1}
+            opacity={0.8}
+            mouseInteractive={true}
           />
         </div>
+
+        {/* Optional overlay for readability */}
+        <div className="absolute inset-0 bg-black/40 z-[1]" />
+
+        {/* Content */}
         <div className="relative z-10 w-full flex flex-col items-center justify-center text-white text-center">
           <h2 className="text-3xl font-bold mb-6">My skills</h2>
+
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl">
             {[
               {
@@ -227,7 +232,7 @@ export default function Home() {
               },
               {
                 label: "Web Development",
-                value: "Next.js (Beginner Level), HTML, CSS,",
+                value: "Next.js (Beginner Level), HTML, CSS",
               },
               {
                 label: "Prompt Engineer",
@@ -241,7 +246,10 @@ export default function Home() {
             ].map((item, index) => (
               <SpotlightCard
                 key={index}
-                className="w-[90%] sm:w-full max-w-md mx-auto min-h-[70px] sm:min-h-[100px] flex flex-col items-center justify-center p-2 sm:p-4"
+                className="w-[90%] sm:w-full max-w-md mx-auto 
+min-h-[70px] sm:min-h-[100px] 
+flex flex-col items-center justify-center p-4
+bg-white/5 backdrop-blur-md border border-white/10 shadow-lg"
                 spotlightColor="rgba(0, 229, 255, 0.2)"
               >
                 <span className="text-sm opacity-70">{item.label}</span>
@@ -255,22 +263,22 @@ export default function Home() {
       <section
         id="projects"
         className="relative flex flex-col items-center justify-center bg-black overflow-hidden 
-             pt-24 sm:pt-0 pb-24 min-h-screen"
+       pt-24 sm:pt-0 pb-24 min-h-screen"
       >
-        {/* Background glitch */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center min-h-screen sm:min-h-0">
-          <LetterGlitch
-            glitchColors={["#00ff00", "#00ffff", "#008000"]}
-            characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-            glitchSpeed={50}
-            centerVignette={true}
-            outerVignette={false}
-            smooth={true}
+        {/* DarkVeil Background */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <DarkVeil
+            hueShift={0}
+            noiseIntensity={0}
+            scanlineIntensity={0}
+            speed={0.5}
+            scanlineFrequency={0}
+            warpAmount={0}
           />
         </div>
 
         {/* Content */}
-        <div className="relative w-full flex flex-col md:flex-row justify-center items-center md:items-center gap-6 md:gap-6 mt-10">
+        <div className="relative z-10 w-full flex flex-col md:flex-row justify-center items-center gap-6 mt-10">
           {/* Folder */}
           <div className="w-full md:w-[40%] flex flex-col justify-center items-center mb-6 md:mb-0">
             <Folder
@@ -286,7 +294,7 @@ export default function Home() {
 
           {/* Projects */}
           <div className="w-full md:w-1/2 max-w-xl text-left space-y-4">
-            <h2 className="text-3xl font-bold mb-4 text-white tracking-wide text-center md:text-left">
+            <h2 className="text-3xl font-bold mb-4 text-white tracking-wide text-center">
               Projects
             </h2>
 
@@ -310,18 +318,21 @@ export default function Home() {
             ].map((proj, idx) => (
               <div
                 key={idx}
-                className="bg-black/30 backdrop-blur-md p-4 rounded-xl border border-white/10 shadow-lg w-[90%] sm:w-full max-w-md mx-auto min-h-[70px] sm:min-h-[100px] flex flex-col items-center justify-center p-2 sm:p-4"
+                className="bg-black/30 backdrop-blur-md rounded-xl border border-white/10 shadow-lg 
+          w-[90%] sm:w-full max-w-md mx-auto min-h-[70px] sm:min-h-[100px] 
+          flex flex-col items-center justify-center p-4"
               >
                 <h3 className="text-xl font-semibold text-cyan-300">
                   {proj.title}
                 </h3>
-                <p className="text-sm mt-1 text-gray-200">{proj.desc}</p>
+                <p className="text-sm mt-1 text-gray-200 text-center md:text-left">
+                  {proj.desc}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
-
       {/* Waifus Section */}
       <section
         id="waifus"
