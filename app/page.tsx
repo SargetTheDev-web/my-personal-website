@@ -8,7 +8,7 @@ import Particles from "@/components/Particles";
 import SpotlightCard from "./components/SpotLightCard";
 import Folder from "./components/Folder";
 import BounceCards from "./components/BounceCards";
-import Plasma from "./components/plasma";
+import SoftAurora from "./components/SoftAurora";
 import DarkVeil from "./components/DarkVeil";
 
 export default function Home() {
@@ -178,7 +178,7 @@ export default function Home() {
               ].map((item, index) => (
                 <SpotlightCard
                   key={index}
-                  className="w-[90%] sm:w-full max-w-md mx-auto min-h-[70px] sm:min-h-[100px] flex flex-col items-center justify-center p-2 sm:p-4"
+                  className="w-[90%] sm:w-full max-w-md mx-auto min-h-[70px] sm:min-h-[100px] flex flex-col items-center justify-center p-4 bg-white/5 backdrop-blur-md border border-white/10 shadow-lg"
                   spotlightColor="rgba(0, 229, 255, 0.2)"
                 >
                   <span className="text-sm opacity-70">{item.label}</span>
@@ -196,19 +196,27 @@ export default function Home() {
         id="skills"
         className="min-h-screen relative flex flex-col items-center justify-center bg-black overflow-hidden pt-24 sm:pt-0"
       >
-        {/* Plasma Background */}
+        {/* SoftAurora Background */}
         <div className="absolute inset-0 z-0 w-full h-full">
-          <Plasma
-            color="#3553ff"
+          <SoftAurora
             speed={0.6}
-            direction="forward"
-            scale={1.1}
-            opacity={0.8}
-            mouseInteractive={true}
+            scale={1.5}
+            brightness={1}
+            color1="#f7f7f7"
+            color2="#0000ff"
+            noiseFrequency={2.5}
+            noiseAmplitude={1}
+            bandHeight={0.5}
+            bandSpread={1}
+            octaveDecay={0.1}
+            layerOffset={0}
+            colorSpeed={1}
+            enableMouseInteraction
+            mouseInfluence={0.25}
           />
         </div>
 
-        {/* Optional overlay for readability */}
+        {/* Overlay for readability */}
         <div className="absolute inset-0 bg-black/40 z-[1]" />
 
         {/* Content */}
@@ -249,7 +257,7 @@ export default function Home() {
                 className="w-[90%] sm:w-full max-w-md mx-auto 
 min-h-[70px] sm:min-h-[100px] 
 flex flex-col items-center justify-center p-4
-bg-white/5 backdrop-blur-md border border-white/10 shadow-lg"
+!bg-black/30 backdrop-blur-md border border-white/10 shadow-lg"
                 spotlightColor="rgba(0, 229, 255, 0.2)"
               >
                 <span className="text-sm opacity-70">{item.label}</span>
@@ -259,7 +267,6 @@ bg-white/5 backdrop-blur-md border border-white/10 shadow-lg"
           </div>
         </div>
       </section>
-
       <section
         id="projects"
         className="relative flex flex-col items-center justify-center bg-black overflow-hidden 
@@ -336,11 +343,11 @@ bg-white/5 backdrop-blur-md border border-white/10 shadow-lg"
       {/* Waifus Section */}
       <section
         id="waifus"
-        className="min-h-screen relative flex items-center justify-center overflow-hidden px-4"
+        className="min-h-screen relative flex items-center justify-center overflow-hidden px-4 bg-#2f1eea inset-0 z-1"
       >
         <div className="absolute inset-0 z-0">
           <Aurora
-            colorStops={["#6a00ff", "#00d4ff", "#0088ff"]}
+            colorStops={["#000000", "#2f1eea", "#000000"]}
             amplitude={1.0}
             blend={0.5}
             speed={0.5}
